@@ -2,4 +2,7 @@ pandas
 numpy
 matplotlib
 openpyxl
+reportlab
 jupyter
+nbformat
+nbconvert
