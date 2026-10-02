@@ -90,9 +90,11 @@ Memo options: `python -m src.memo --month 2025-09 --charts spc pareto` (any mont
 - **Config** - site profile, KPI targets, RAG rules
 - **Incident Log** - the cleaned log with filters
 - **Monthly KPIs** - 18-month KPI table with red/amber/green status columns
-- **Dashboard** - KPI cards, 12+ month TRIR/LTIF trend, leading vs lagging split, department Pareto, days-lost histogram, and live YTD-vs-target boxes driven by Excel formulas
+- **Dashboard** - KPI cards, a slicer-style year and month filter, a live filtered-period table, 12+ month TRIR/LTIF trend, leading vs lagging split, department Pareto, and days-lost histogram
 
-RAG rules: green = meets target, amber = within 20% of target, red = beyond. Edit targets on the Config sheet and in `src/config.py`.
+RAG rules: green = meets target, amber = within 20% of target, red = beyond. Targets and amber limits live on the Config sheet, so editing them there updates the dashboard statuses; edit `src/config.py` to change them everywhere.
+
+Excel slicers cannot be written by openpyxl, so the dashboard filter is a pair of validated drop-downs (Year, and Month with an All option) that drive the filtered-period table through live `SUMIFS` formulas. Pick a period, and exposure, counts, TRIR, LTIF, severity and near-miss ratio recalculate with their statuses.
 
 ## Manual Steps
 
