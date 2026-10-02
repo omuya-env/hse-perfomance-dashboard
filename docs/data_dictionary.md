@@ -2,28 +2,28 @@
 
 ## Purpose of dataset
 
-The given dataset represents a 18-months artificial incident log for one industrial operation site.
+The given dataset represents an 18-month synthetic incident log for one industrial operation site.
 
 The dataset is created for HSE performance reporting, KPI calculation, trend analysis, department comparison and management reporting.
 
-This is artificial data and does not refer to any company’s incident reports.
+This is artificial data and does not refer to any company's incident reports.
 
 ---
 
 ## Incident level fields
 
-| Field           | Type     | Description                                                       |
-| --------------- | -------- | -----------------------------------------------------------------|
-| `incident_id`   | String   | Unique ID of incident/event                                        |
-| `date`          | Date     | Date of incident                                                  |
-| `shift`         | Category | Work shift in which the incident occurred                          |
-| `department`    | Category | Department in which the incident happened                           |
-| `event_type`    | Category | HSE event classification                                          |
-| `body_part`     | Category | Affected body part, where necessary                                |
-| `immediate_cause`| Category | Immediate unsafe act or unsafe condition causing the event        |
-| `root_cause`    | Category | Root cause from 5-whys analysis                                    |
-| `days_lost`     | Integer  | Number of days lost because of the incident                        |
-| `contractor_flag`| Boolean  | Whether the incident was related to a contractor or not            |
+| Field             | Type     | Description                                                       |
+| ----------------- | -------- | -----------------------------------------------------------------|
+| `incident_id`     | String   | Unique ID of incident/event                                        |
+| `date`            | Date     | Date of incident                                                  |
+| `shift`           | Category | Work shift in which the incident occurred                          |
+| `department`      | Category | Department in which the incident happened                           |
+| `event_type`      | Category | HSE event classification                                          |
+| `body_part`       | Category | Affected body part, where necessary                                |
+| `immediate_cause` | Category | Immediate unsafe act or unsafe condition causing the event        |
+| `root_cause`      | Category | Root cause from 5-whys analysis                                    |
+| `days_lost`       | Integer  | Number of days lost because of the incident                        |
+| `contractor_flag` | Boolean  | Whether the incident was related to a contractor or not            |
 
 ---
 
@@ -135,7 +135,7 @@ Main dataset includes:
 * One operation site
 * 18 months period
 * ~400-600 employees
-* ~25,000 safe man-hours/month
+* ~86,800 safe man-hours per month (500 employees x 8-hour shifts x working days)
 * Monthly granularity for KPI analysis
 
 Incident level data stays at individual-event level in order to conduct analysis of departments, causes, event types and severity.

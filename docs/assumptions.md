@@ -10,13 +10,15 @@ The dataset is generated for one industrial site within 18 months and intended t
 
 * Employees: 500
 * Period: 18 months
-* Safe man-hours average: 25 000 per month
-* Departments:
+* Safe man-hours: derived, about 86,800 per month (500 employees x 8-hour shifts x average 21.7 working days)
+* Departments and headcount:
 
-  * Production
-  * Maintenance
-  * Logistics
-  * Warehouse
+  * Production: 220
+  * Maintenance: 130
+  * Logistics: 80
+  * Warehouse: 70
+
+The man-hours basis is deliberately realistic so that TRIR (recordables x 200,000 / hours) lands in the range real manufacturing sites report (roughly 1 to 6). The original build-plan figure of 25,000 man-hours per month was inconsistent with a 500-person site and would have produced implausible KPI values; the KPI calculations in this project therefore use the derived exposure above.
 
 ## Expected event distribution
 
@@ -33,17 +35,17 @@ These percentages are targets rather than mandatory requirements. The generator 
 
 The site will be modelled with three major periods:
 
-### Period 1 — Improvement
+### Period 1 - Improvement
 
 The first few months will have gradual improvement in recordable incidents and other lagging indicators.
 
-### Period 2 — Deterioration
+### Period 2 - Deterioration
 
 The period with a bad quarter introduces the increase in incident activity and lost-time incidents.
 
 The maintenance will be used as the department with deterioration during this period to give an opportunity to analyze some operational problem.
 
-### Period 3 — Recovery
+### Period 3 - Recovery
 
 The last few months will see the recovery of the performance to the previous levels.
 
@@ -77,6 +79,16 @@ The deterioration will be concentrated in certain areas like:
 * selected shifts
 
 This way, it will give an opportunity to find out the probable cause in the further analysis.
+
+## Leading indicator: synthetic inspection programme
+
+The incident log alone contains no leading indicator, so the project adds a synthetic monthly safety-inspection series in `src/config.py` (seeded, reproducible):
+
+* about 54 inspections per month during improvement months
+* a deliberate dip to about 38 during the bad quarter (inspection effort diverted to firefighting)
+* about 50 during recovery
+
+Poisson variation is applied on top of these means. The series exists to power the leading-vs-lagging comparison on the dashboard and should be read as a modelled programme, not as data from a real audit schedule.
 
 ## Synthetic data labeling
 
