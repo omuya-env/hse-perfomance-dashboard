@@ -116,6 +116,12 @@ def rag_status(value: float, target: float, higher_is_better: bool = False) -> s
 # ============================================================
 
 
+def amber_limit(name: str) -> float:
+    """Return the value at which a KPI turns amber (target plus or minus the band)."""
+    target = TARGETS[name]
+    return target * (1 - AMBER_BAND) if name in HIGHER_IS_BETTER else target * (1 + AMBER_BAND)
+
+
 def month_list() -> list[pd.Period]:
     """Return the 18 study months as monthly periods."""
     return list(pd.period_range(PERIOD_START, PERIOD_END, freq="M"))
